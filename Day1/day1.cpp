@@ -14,15 +14,16 @@ int main() {
             curr += stoi(line);
         }
     }
-
+    input.close();
     cout << "Part 1: " << q.top() << endl;
+
     int sum = 0;
     for (int i = 0; i < 3; i++) {
         sum += q.top();
         q.pop();
     }
     cout << "Part 2: " << sum << endl;
-    input.close();
+
     return 0;
 }
 
