@@ -4,7 +4,7 @@
 int main() {
     int sum1 = 0;
     int sum2 = 0;
-    ifstream input("day3In.txt");
+    ifstream input("day3in.txt");
     string line;
     bitset<52> copies;
     bitset<52> group1;

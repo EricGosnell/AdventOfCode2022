@@ -4,7 +4,7 @@ int main() {
     priority_queue<int> q;
     int curr = 0;
 
-    ifstream input("day1In.txt");
+    ifstream input("day1in.txt");
     string line;
     while(getline(input, line)) {
         if (line.empty()) {
