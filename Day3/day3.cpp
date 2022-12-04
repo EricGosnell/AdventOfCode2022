@@ -10,7 +10,7 @@ int main() {
     bitset<52> group1;
     bitset<52> group2;
     while (getline(input, line)) {
-        // part 1
+        // Part 1
         for (int i=0; i<line.length()/2; i++) {
             if (line[i] >= 'a') {
                 copies.set(line[i] - 'a');
@@ -29,7 +29,7 @@ int main() {
         }
         copies.reset();
 
-        // part 2
+        // Part 2
         if (group1.none()) {
             for (int i=0; i<line.length(); i++) {
                 if (line[i] >= 'a') {
