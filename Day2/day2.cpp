@@ -4,18 +4,14 @@ int main() {
     ifstream input("day2in.txt");
     string line;
 
-    int score1 = 0;
-    int score2 = 0;
+    int score1 = 0, score2 = 0;
     while(getline(input, line)) {
         score1 += (line[2] - 'W') + ((line[2]-line[0]) % 21 % 3 ^ 1) * 6 % 15;
         int diff = line[0] - 64 + line[2] - 89;
-        if (diff == 0) {
-            score2 += 3;
-        } else {
-            score2 += (line[2] - 'X') * 3 + diff % 4 + diff / 4;
-        }
+        score2 += (diff == 0) ? 3 : (line[2] - 'X') * 3 + diff % 4 + diff / 4;
     }
     input.close();
+
     cout << "Part 1: " << score1 << endl;
     cout << "Part 2: " << score2 << endl;
     return 0;
