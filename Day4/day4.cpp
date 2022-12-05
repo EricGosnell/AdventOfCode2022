@@ -1,15 +1,5 @@
 #include "../aoc2022.h"
 
-vector<string> split (const string &s, char delim) {
-    vector<string> result;
-    stringstream ss(s);
-    string item;
-    while(getline(ss, item, delim)) {
-        result.push_back(item);
-    }
-    return result;
-}
-
 int main() {
     ifstream input("day4in.txt");
     string line;

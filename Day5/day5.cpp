@@ -1,25 +1,5 @@
 #include "../aoc2022.h"
 
-vector<string> split (const string &s, char delim) {
-    vector<string> result;
-    stringstream ss(s);
-    string item;
-    while(getline(ss, item, delim)) {
-        result.push_back(item);
-    }
-    return result;
-}
-
-string removeEndChar(string s) {
-    string s2;
-    for (int i = 0; i < s.size(); i++) {
-        if (s[i] != '\r') {
-            s2 += s[i];
-        }
-    }
-    return s2;
-}
-
 int main() {
     stack<char> s[9];
     s[0].push('Q'); s[0].push('W'); s[0].push('P'); s[0].push('S'); s[0].push('Z'); s[0].push('R'); s[0].push('H'); s[0].push('D');
