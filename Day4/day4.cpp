@@ -1,6 +1,4 @@
 #include "../aoc2022.h"
-#include <sstream>
-#include <vector>
 
 vector<string> split (const string &s, char delim) {
     vector<string> result;
