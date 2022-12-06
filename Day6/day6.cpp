@@ -1,7 +1,12 @@
 #include "../aoc2022.h"
+//Part 1
+//#define marker 4
+//Part 2
+#define marker 14
+
 
 int main() {
-    ifstream input("day6in_test.txt");
+    ifstream input("day6in.txt");
     string line;
     while(getline(input,line)) {
         vector<char> v;
@@ -9,20 +14,20 @@ int main() {
         int c = 0;
         for (int i = 0; i < line.size(); i++) {
             v.insert(v.begin(),line[i]);
-            if (v.size() > 4) {
+            if (v.size() > marker) {
                 v.pop_back();
             }
-            for (int j = 0; j < 4; j++) {
-                for (int k = 0; k < 4; k++) {
+            for (int j = 0; j < marker; j++) {
+                for (int k=j+1; k < marker; k++) {
                     if (v[j] == v[k]) {
                         allDiff = false;
                     }
                 }
             }
-            if (allDiff) {
-                cout << "Part 1: " << c << endl;
+            if (allDiff && v.size() == marker) {
+                cout << "Part 2: " << c+1 << endl;
+                break;
             } else {
-                cout << line[c] << " ";
                 c++;
             }
             allDiff = true;
