@@ -107,7 +107,7 @@ int main() {
     int sum1 = 0;
     int sum2 = 0;
 
-    ifstream input("test.txt");
+    ifstream input("day9in_eric.txt");
     string line;
     char dir;
     int len;
