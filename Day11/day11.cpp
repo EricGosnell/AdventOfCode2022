@@ -28,7 +28,7 @@ unsigned long calcMonkeyBusiness(vector<Monkey*> monkeys, int kFactor, int round
                 } else if (monkeys[j]->operation[2]) {
                     k *= k;
                 }
-                k %= 96577;
+                k %= 9699690; //96577; testMonkeys
 //                cout << k << endl;
                 if (!((k/kFactor) % monkeys[j]->factor)) {
                     monkeys[j]->t->items.push_back(k/kFactor);
@@ -65,9 +65,9 @@ int main() {
     mt0->t = mt2; mt0->f = mt3; mt1->t = mt2; mt1->f = mt0; mt2->t = mt1; mt2->f = mt3; mt3->t = mt0; mt3->f = mt1;
     testMonkeys.push_back(mt0); testMonkeys.push_back(mt1); testMonkeys.push_back(mt2); testMonkeys.push_back(mt3);
 
-    cout << "Part 1: " << calcMonkeyBusiness(monkeys, 3, 20) << endl;
+//    cout << "Part 1: " << calcMonkeyBusiness(monkeys, 3, 20) << endl;
 
 
-//    cout << "Part 2: " << calcMonkeyBusiness(monkeys, 1, 10000) << endl;
+    cout << "Part 2: " << calcMonkeyBusiness(monkeys, 1, 10000) << endl;
     return 0;
 }
