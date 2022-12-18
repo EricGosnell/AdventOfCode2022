@@ -5,7 +5,12 @@
 // 452-510 X, 13-173 Y
 
 int main() {
-    array<array<bool,maxY>,400> map = {};
+    array<array<char,maxY>,400> map = {};
+    for (int i=0; i<map.size(); i++) {
+        for (int j=0; j<map[i].size(); j++) {
+            map[i][j] = ' ';
+        }
+    }
 
     ifstream input("day14in.txt");
     string line;
@@ -29,21 +34,21 @@ int main() {
                     if (curr.first == next.first) { // Vertical Line
                         if (curr.second < next.second) {
                             for (int j=curr.second; j<=next.second; j++) {
-                                map[curr.first][j] = true;
+                                map[curr.first][j] = '#';
                             }
                         } else {
                             for (int j=next.second; j<=curr.second; j++) {
-                                map[curr.first][j] = true;
+                                map[curr.first][j] = '#';
                             }
                         }
                     } else { // Horizontal Line
                         if (curr.first < next.first) {
                             for (int j=curr.first; j<=next.first; j++) {
-                                map[j][curr.second] = true;
+                                map[j][curr.second] = '#';
                             }
                         } else {
                             for (int j=next.first; j<=curr.first; j++) {
-                                map[j][curr.second] = true;
+                                map[j][curr.second] = '#';
                             }
                         }
                     }
@@ -54,8 +59,8 @@ int main() {
     }
     int count = 0;
     bool abyss = false;
-    bool donzo = false;
-    while (!donzo) {
+    bool floor = false;
+    while (!floor) {
         pair<int, int> sand = {500-shiftX, 0};
         while (true) {
             if (sand.second+1 == map[0].size() && !abyss) {
@@ -63,22 +68,22 @@ int main() {
                 abyss = true;
             }
             if (sand.second+1 == map[0].size()) {
-                map[sand.first][sand.second] = true;
+                map[sand.first][sand.second] = '.';
                 break;
             }
-            if (!map[sand.first][sand.second+1]) {
+            if (map[sand.first][sand.second+1] == ' ') {
                 sand.second += 1;
-            } else if (sand.first-1 >= 0 && !map[sand.first-1][sand.second+1]) {
+            } else if (sand.first-1 >= 0 && map[sand.first-1][sand.second+1] == ' ') {
                 sand.first -= 1;
                 sand.second += 1;
-            } else if (sand.first+1 < map.size() && !map[sand.first+1][sand.second+1]) {
+            } else if (sand.first+1 < map.size() && map[sand.first+1][sand.second+1] == ' ') {
                 sand.first += 1;
                 sand.second += 1;
             } else {
                 if (sand.first == 500-shiftX && sand.second == 0) {
-                    donzo = true;
+                    floor = true;
                 }
-                map[sand.first][sand.second] = true;
+                map[sand.first][sand.second] = '.';
                 break;
             }
         }
@@ -88,11 +93,7 @@ int main() {
 
     for (int i=0; i<map[0].size(); i++) {
         for (int j=0; j<map.size(); j++) {
-            if (map[j][i]) {
-                cout << "#";
-            } else {
-                cout << ".";
-            }
+            cout << map[j][i];
         }
         cout << i << endl;
     }
